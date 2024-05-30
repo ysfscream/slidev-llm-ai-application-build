@@ -1,144 +1,239 @@
 ---
-# try also 'default' to start simple
-theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
+theme: apple-basic
 background: https://cover.sli.dev
-# some information about your slides, markdown enabled
-title: Welcome to Slidev
+title: LLM AI 应用的简单实现方法
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-# apply any unocss classes to the current slide
-class: text-center
-# https://sli.dev/custom/highlighters.html
+  ## EMQ 培训内容
+  本教程旨在介绍如何使用大语言模型 API 构建简单的 AI 应用。
+class: text-left
 highlighter: shiki
-# https://sli.dev/guide/drawing
 drawings:
   persist: false
-# slide transition: https://sli.dev/guide/animations#slide-transitions
 transition: slide-left
-# enable MDC Syntax: https://sli.dev/guide/syntax#mdc-syntax
 mdc: true
 ---
 
-# Welcome to Slidev
+<div class="absolute inset-0 flex flex-col justify-center items-center">
+  <h1 class="relative inline-flex items-center">
+    <span class="text-black mr-2">🚀</span>
+    <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+      LLM AI 应用的简单实现方法
+    </span>
+  </h1>
+  <p class="pt-6">如何使用大语言模型 API 构建简单的 AI 应用</p>
+</div>
 
-Presentation slides for developers
+---
 
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
+<h1 class="relative inline-flex items-center">
+  <span class="text-black mr-2">📱</span>
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    大语言模型应用
   </span>
-</div>
+</h1>
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub" title="Open in GitHub"
-    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div>
+> 大语言模型（LLM）是一种利用机器学习技术来理解和生成人类语言的人工智能模型。而大语言模型的 AI 应用则是基于这种模型构建的各种应用程序。
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+<ul class="py-4">
+  <li>ChatGPT</li>
+  <li>GitHub Copilot</li>
+  <li>Notion AI</li>
+  <li>...</li>
+</ul>
 
----
-transition: fade-out
----
+为什么需要基于大语言模型的 AI 应用？
 
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
-
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
-<!--
-Here is another comment.
--->
+<ul class="pt-4">
+  <li>提升生产力</li>
+  <li>增强创作</li>
+  <li>智能交互</li>
+  <li>...</li>
+</ul>
 
 ---
-transition: slide-up
-level: 2
+
+<h1 class="relative inline-flex items-center">
+  <span class="text-black mr-2">🌐</span>
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    大语言模型 API
+  </span>
+</h1>
+
+<p class="pt-6">构建大语言模型 AI 最简单和快速的方式就是直接使用 AI 厂商提供的 API 服务。</p>
+
+<p class="pt-6">常见的 LLM 服务 API 平台：</p>
+
+<ul>
+  <li><a href="https://platform.openai.com/docs/api-reference/introduction">OpenAI Platform</a></li>
+  <li><a href="https://azure.microsoft.com/en-us/products/ai-services/openai-service">Azure OpenAI</a></li>
+  <li><a href="https://ai.google.dev/gemini-api">Google Gemini</a></li>
+  <li><a href="https://docs.anthropic.com/en/api/getting-started">Anthropic - Claude</a></li>
+  <li><a href="https://platform.moonshot.cn/docs/api/chat#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF">Kimi</a></li>
+  <li>通义千问，文言一心</li>
+  <li>...</li>
+</ul>
+
 ---
 
-# Navigation
+<h1 class="relative inline-flex items-center">
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    使用 OpenAI API
+  </span>
+</h1>
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
+<p class="pt-6">我们可以通过使用任何语言的 HTTP 请求，或者利用其官方的 Python 包和 Node.js 库，甚至社区维护的库，与 Open AI 的大语言模型通过 API 来进行交互。</p>
 
-## Keyboard Shortcuts
+OpenAI API 提供了多种功能：
 
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
+- 文本生成 (Text Generation)
+  - Chat Completions API
+  - JSON Mode
+- 函数调用 (Function Calling)
+- 嵌入 (Embeddings)
+- 微调 (Fine-tuning)
+- 图像生成 (Image Generation)
+- 视觉处理 (Vision)
+- ...
 
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+---
+
+<h1 class="relative inline-flex items-center">
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    Chat Completions API
+  </span>
+</h1>
+
+```shell {all|1|3|5|7-10|11-14} twoslash
+curl https://api.openai.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-3.5-turbo-16k",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "Hello!"
+      }
+    ]
+  }'
+```
+
+<ExplainAPI :content="[
+  '请求的 API 端点',
+  '认证信息，API Key 配置在这里',
+  '选择一个支持的大语言模型',
+  '发送一条系统消息',
+  '用户输入一条消息'
+]" />
+
+---
+
+<h1 class="relative inline-flex items-center">
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    Streaming
+  </span>
+</h1>
+
+````md magic-move {lines: false}
+```shell
+curl https://api.openai.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-3.5-turbo-16k",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "Hello!"
+      }
+    ]
+  }'
+```
+```shell {all|16} twoslash
+curl https://api.openai.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-3.5-turbo-16k",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "Hello!"
+      }
+    ],
+    "stream": true
+  }'
+```
+````
+
+<p v-click="[2]" class="pt-4">启用流模式后，消息将以增量方式发送，就像在 ChatGPT 中一样。数据会作为 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format">Server-Sent Events(SSE)</a> 实时传送，每当有新的数据可用时就会发送。传输过程会以一个 <code>data: [DONE]</code> 消息结束。</p>
 
 ---
 layout: two-cols
-layoutClass: gap-16
 ---
 
-# Table of contents
+## Default Response
 
-You can use the `Toc` component to generate a table of contents for your slides:
-
-```html
-<Toc minDepth="1" maxDepth="1"></Toc>
+```json
+{
+  "id": "chatcmpl-123",
+  "object": "chat.completion",
+  "created": 1677652288,
+  "model": "gpt-3.5-turbo-0125",
+  "system_fingerprint": "fp_44709d6fcb",
+  "choices": [{
+    "index": 0,
+    "message": {
+      "role": "assistant",
+      "content": "\n\nHello there, how may I assist you today?",
+    },
+    "logprobs": null,
+    "finish_reason": "stop"
+  }],
+  "usage": {
+    "prompt_tokens": 9,
+    "completion_tokens": 12,
+    "total_tokens": 21
+  }
+}
 ```
-
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
 
 ::right::
 
-<Toc v-click minDepth="1" maxDepth="2"></Toc>
+## Streaming Response
+
+```json
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-3.5-turbo-0125", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}]}
+
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-3.5-turbo-0125", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"Hello"},"logprobs":null,"finish_reason":null}]}
+
+....
+
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-3.5-turbo-0125", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}]}
+```
+
+<style>
+.grid {
+  gap: 12px;
+}
+</style>
 
 ---
-layout: image-right
-image: https://cover.sli.dev
+
+# 配置
+
 ---
 
 # Code
@@ -190,6 +285,7 @@ Notes can also sync with clicks
 -->
 
 ---
+
 level: 2
 ---
 
@@ -306,6 +402,7 @@ Also, HTML elements are valid:
 -->
 
 ---
+
 class: px-20
 ---
 
@@ -560,9 +657,14 @@ database "MySql" {
 [Learn More](https://sli.dev/guide/syntax.html#diagrams)
 
 ---
+
 foo: bar
 dragPos:
   square: 691,32,167,_,-16
+---
+
+dragPos:
+  square: 0,-111,0,0
 ---
 
 # Draggable Elements
@@ -605,6 +707,7 @@ Double-click on the draggable elements to edit their positions.
 <v-drag-arrow pos="67,452,253,46" two-way op70 />
 
 ---
+
 src: ./pages/multiple-entries.md
 hide: false
 ---
@@ -636,6 +739,7 @@ console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-
 ```
 
 ---
+
 layout: center
 class: text-center
 ---
