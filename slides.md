@@ -615,7 +615,7 @@ console.log(response);
     - ChatGPT Web | Desktop (Chat APP)
     - [v0](https://v0.dev/)
     - [Perplexity AI](https://www.perplexity.ai/)
-- Hugging Face - Platform
+- [Hugging Face - Platform](https://huggingface.co/)
 
 ---
 
