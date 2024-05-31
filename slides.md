@@ -11,6 +11,7 @@ drawings:
   persist: false
 transition: slide-left
 mdc: true
+lineNumbers: true
 ---
 
 <div class="absolute inset-0 flex flex-col justify-center items-center">
@@ -138,7 +139,7 @@ curl https://api.openai.com/v1/chat/completions \
   </span>
 </h1>
 
-````md magic-move {lines: false}
+````md magic-move
 ```shell
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -219,6 +220,8 @@ layout: two-cols
 
 {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-3.5-turbo-0125", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"Hello"},"logprobs":null,"finish_reason":null}]}
 
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-3.5-turbo-0125", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"How are"},"logprobs":null,"finish_reason":null}]}
+
 ....
 
 {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-3.5-turbo-0125", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}]}
@@ -232,206 +235,245 @@ layout: two-cols
 
 ---
 
-# 配置
+<h1 class="relative inline-flex items-center">
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    常用配置
+  </span>
+</h1>
 
----
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover![^1]
-
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
+```json {all|2|3|4|5|6|7|8-21|all} twoslash
+{
+  "model": "gpt-4o",
+  "temperature": 0.7,
+  "max_tokens": 1500,
+  "top_p": 1,
+  "stream": true,
+  "stop": ["\n\n"],
+  "messages": [
+    {
+      "role": "system",
+      "content": "你是一个帮助用户进行编程任务的 AI 助手。"
+    },
+    {
+      "role": "user",
+      "content": "我正在使用 JavaScript，请问如何定义一个箭头函数？"
+    },
+    {
+      "role": "assistant",
+      "content": "你可以使用以下语法定义一个箭头函数：\n\n```javascript\nconst myFunction = () => {\n  // 你的代码\n};\n```"
+    }
+  ]
+}
 ```
 
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
+<ExplainAPI :content="[
+  '使用的模型，如 gpt-4o, gpt-4-turbo 等',
+  '生成文本的随机性，较高的值使输出更随机，较低的值使输出更确定',
+  '生成文本的最大令牌数',
+  '核心采样，多样性控制',
+  '启用流式输出',
+  '停止生成的标志',
+  '对话的消息列表。包含角色和内容，确保对话连贯性',
+]" />
 
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<!-- Inline style -->
 <style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
+.explain-api {
+  position: absolute;
+  top: 7rem;
+  right: 6rem;
 }
 </style>
 
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
-
+---
+layout: two-cols
 ---
 
-level: 2
----
+## Python
 
-# Shiki Magic Move
-
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
-
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
-
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
+```shell
+pip install openai
 ```
 
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+stream = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[{"role": "user", "content": "Say this is a test"}],
+    stream=True,
+)
+for chunk in stream:
+    if chunk.choices[0].delta.content is not None:
+        print(chunk.choices[0].delta.content, end="")
+```
+
+::right::
+
+## Node.js / Typescript
+
+```shell
+npm install openai@^4.0.0
+```
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function main() {
+    const stream = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: "Say this is a test" }],
+        stream: true,
+    });
+    for await (const chunk of stream) {
+        process.stdout.write(chunk.choices[0]?.delta?.content || "");
     }
+}
+
+main();
+```
+
+<style>
+.grid {
+  gap: 24px;
+}
+</style>
+---
+
+<h1 class="relative inline-flex items-center">
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    使用本地 AI 服务
+  </span>
+</h1>
+
+使用 Ollama 一键运行 Llama 3，并且内置提供了 API 服务。
+
+```shell
+# 使用 Ollama 运行 Llama 3 模型默认为 8B 参数版本
+ollama run llama3
+
+# 运行 Open WebUI，一个开源的 AI 聊天 UI 服务器
+docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+
+# 使用本地的大语言模型 API
+curl -X POST http://localhost:11434/api/generate -d '{
+  "model": "llama3",
+  "prompt":"Why is the sky blue?"
+ }'
+```
+
+---
+
+<img src="/ollama.png" class="h-120" />
+
+---
+
+<h1 class="relative inline-flex items-center">
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    Prompt 提示工程
+  </span>
+</h1>
+
+<img src="/prompt.png" class="h-100" />
+
+此提示演示了如何有效使用每个构建块，从而产生高质量的输出。
+
+---
+
+<h1 class="relative inline-flex items-center mb-5">
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    Demo: MQTTX Copilot
+  </span>
+</h1>
+
+```javascript
+const response = await fetch('https://api.openai.com/v1/chat/completions', fetchOptions)
+if (response && response.status === 200 && response.ok) {
+  const throttledScroll = throttle(() => {
+    this.scrollToBottom()
+  }, 500)
+  const done = await processStream(response, (chunkStr) => {
+    this.responseStreamText += chunkStr
+    this.$nextTick(() => {
+      Prism.highlightAllUnder(this.$refs.chatBody as HTMLElement)
+      throttledScroll()
+    })
+  })
+  if (done) {
+    responseMessage.content = this.responseStreamText
+    await copilotService.create(responseMessage)
+    this.messages.push(responseMessage)
+    this.$nextTick(() => {
+      Prism.highlightAllUnder(this.$refs.chatBody as HTMLElement)
+    })
   }
 }
 ```
 
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
+https://github.com/emqx/MQTTX/blob/main/src/components/Copilot.vue
+
+---
+
+<img src="/copilot-code-quick-actions.png" class="h-120"/>
+
+---
+
+<h1 class="relative inline-flex items-center mb-5">
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    Demo: 使用 OpenAI Node.js SDK 构建一个 AI Agent
+  </span>
+</h1>
+
+```javascript
+// 获取用户位置
+async function getLocation() {
+  const response = await fetch("https://ipapi.co/json/");
+  const locationData = await response.json();
+  return locationData;
+}
+
+// 获取当前天气
+async function getCurrentWeather(latitude, longitude) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=apparent_temperature`;
+  const response = await fetch(url);
+  const weatherData = await response.json();
+  return weatherData;
+}
+```
+
+---
+
+```javascript
+// 描述函数
+const tools = [
+  {
+    type: "function",
+    function: {
+      name: "getCurrentWeather",
+      description: "Get the current weather in a given location",
+      parameters: {
+        type: "object",
+        properties: {
+          latitude: { type: "string" },
+          longitude: { type: "string" },
+        },
+        required: ["longitude", "latitude"],
+      },
     }
-  })
-}
+  },
+  {
+    type: "function",
+    function: {
+      name: "getLocation",
+      description: "Get the user's location based on their IP address",
+      parameters: { type: "object", properties: {} },
+    }
+  },
+];
 ```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
----
-
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
 
 ---
 
