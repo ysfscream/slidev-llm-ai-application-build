@@ -417,7 +417,9 @@ https://github.com/emqx/MQTTX/blob/main/src/components/Copilot.vue
 
 ---
 
-<img src="/copilot-code-quick-actions.png" class="h-120"/>
+<img src="/copilot-code-quick-actions.png" class="h-100"/>
+
+https://mqttx.app/docs/copilot
 
 ---
 
@@ -516,8 +518,8 @@ async function agent(userInput) {
   messages.push({ role: "user", content: userInput });
   const response = await openai.chat.completions.create({
     model: "gpt-4",
-    messages: messages,
-    tools: tools,
+    messages,
+    tools,
   });
   console.log(response);
 }
@@ -572,39 +574,86 @@ console.log(response);
 
 ---
 
-# Clicks Animations
+<h1 class="relative inline-flex items-center mb-5">
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    使用限制
+  </span>
+</h1>
 
-You can add `v-click` to elements to add a click animation.
+<br/>
 
-<div v-click>
+直接使用 AI 服务的 API 会有一些限制：
 
-This shows up when you click the slide:
+- 一定的费用
+- 网络依赖
+- 数据隐私
+- 请求速率限制
+- 响应延迟
 
-```html
-<div v-click>This shows up when you click the slide.</div>
-```
+使用本地 LLM API 的话：
 
+- 对机器配置的限制比较高
+- 维护成本
+- 存储需求
+- 能耗问题
+- 部署复杂性
+
+---
+
+<h1 class="relative inline-flex items-center mb-5">
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    扩展
+  </span>
+</h1>
+
+- [AI Agent](https://aws.amazon.com/what-is/ai-agents/)
+- [RAG (Retrieval-Augmented Generation) 模型](https://aws.amazon.com/what-is/retrieval-augmented-generation/)
+- [🦜🔗 LangChain](https://www.langchain.com/)
+- [Dify.AI](https://dify.ai/)
+- [Lobe UI](https://ui.lobehub.com/), [open-webui](https://docs.openwebui.com/)
+- Apps
+    - ChatGPT Web | Desktop (Chat APP)
+    - [v0](https://v0.dev/)
+    - [Perplexity AI](https://www.perplexity.ai/)
+
+---
+
+<h1 class="relative inline-flex items-center mb-5">
+  <span class="text-black mr-2">🤔</span>
+  <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+    Thinking
+  </span>
+</h1>
+
+<div class="grid grid-cols-2 gap-4">
+  <div>
+    <ul>
+      <li>MQTT + AI -> Agent?</li>
+      <li>带来便利的同时也有安全问题
+        <ul>
+          <li><span v-mark.circle.red="1">隐私和安全</span></li>
+          <li>准确性和偏见</li>
+        </ul>
+      </li>
+      <li>Local-first</li>
+      <li>大模型的闭源与开源</li>
+    </ul>
+  </div>
+  <div>
+    <Tweet id="1793252867454685232" />
+  </div>
 </div>
 
-<br>
+---
 
-<v-click>
-
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div mt-20 v-click>
-
-[Learn More](https://sli.dev/guide/animations#click-animations)
-
+<div class="absolute inset-0 flex flex-col justify-center items-center">
+  <h1 class="relative inline-flex items-center">
+    <span class="text-black mr-2">🙏</span>
+    <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(123deg, #5e4eff 13.15%, #f14eff 88.72%);">
+      Thanks
+    </span>
+  </h1>
+  <p class="pt-6">Shifan Yu 2024-5-31</p>
 </div>
 
 ---
