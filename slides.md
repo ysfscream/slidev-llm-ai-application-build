@@ -572,6 +572,8 @@ console.log(response);
 
 - 示例输出：根据用户位置和天气推荐活动。
 
+![agent-nodejs](/agent-nodejs.png)
+
 ---
 
 <h1 class="relative inline-flex items-center mb-5">
